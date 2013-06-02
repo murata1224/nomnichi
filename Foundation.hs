@@ -36,6 +36,7 @@ import Web.ClientSession (getKey)
 import Text.Hamlet (hamletFile)
 import Data.Text
 import Yesod.Form.Nic(YesodNic, nicHtmlField)
+import Data.Maybe (fromJust)
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
 -- starts running, such as database connections. Every handler will have
@@ -89,6 +90,13 @@ instance Yesod App where
         master <- getYesod
         mmsg <- getMessage
 
+        Entity memberpageId memeberpage <- runDB $ selectFirst [WebpagePermaLink ==. "members"] [] >>= return.fromJust
+        Entity accesspageId accesspage <- runDB $ selectFirst [WebpagePermaLink ==. "access-index"] [] >>= return.fromJust
+        Entity researchpageId researchpage <- runDB $ selectFirst [WebpagePermaLink ==. "research-index"] [] >>= return.fromJust
+        Entity researchgnpageId researchgnpage <- runDB $ selectFirst [WebpagePermaLink ==. "research-gn-index"] [] >>= return.fromJust
+        Entity researchnewpageId researchnewpage <- runDB $ selectFirst [WebpagePermaLink ==. "research-new-index"] [] >>= return.fromJust
+        Entity thesispageId thesispage <- runDB $ selectFirst [WebpagePermaLink ==. "thesis-index"] [] >>= return.fromJust
+        Entity bibspageId bibspage <- runDB $ selectFirst [WebpagePermaLink ==. "bibs-index"] [] >>= return.fromJust
         -- We break up the default layout into two components:
         -- default-layout is the contents of the body tag, and
         -- default-layout-wrapper is the entire page. Since the final
