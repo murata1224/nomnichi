@@ -1,0 +1,19 @@
+<div class="webpage_list">
+  <h1 class="webpage_list"> Webpages
+  $if null webpages
+    <p> There are no webpages in the blog.
+  $else
+    <ul>
+      $forall Entity webpageId webpage <- webpages
+        <li>
+          <a href=@{WebpageR webpageId}> #{webpageTitle webpage}
+
+<div class="webpage_form">
+  <form method=post enctype=#{enctype}>
+    ^{webpageWidget}
+    <div>
+      <input type=submit value="Post New Webpage">
+      <a class=preview>プレビュー
+
+  <div class="webpage_preview">
+<a href=@{HomeR}/auth/logout> Logout

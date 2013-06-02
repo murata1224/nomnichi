@@ -1,0 +1,11 @@
+<h1 class=title> #{webpageTitle webpage}
+
+<webpage> #{webpageContent webpage}
+
+<hr>
+<div id=webpage_footer>
+  <ul>
+    <li>
+      <a href=@{HomeR}> Homeへ
+    <li>
+      <a href=@{EditWebpageR webpageId}> 編集

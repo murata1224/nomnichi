@@ -1,0 +1,13 @@
+<h1> Pages
+$if null pages
+    <p> There are no pages in the blog
+$else
+    <ul>
+        $forall Entity webpageId webpage <- webpage
+            <li>
+                <a href=@{WebpageR webpageId} > #{webpageTitle webpage}
+<hr>
+  <form method=post enctype=#{enctype}>
+    ^{webpageWidget}
+    <div>
+        <input type=submit value="Post New Webpage">
