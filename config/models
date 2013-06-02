@@ -35,3 +35,12 @@ Loginuser
     idstr       Text
     password    Text Maybe
     UniqueUsr idstr
+
+Webpage
+    title   Text
+    content Html
+    permaLink Text
+    author  Text
+    createdOn UTCTime
+    updatedOn UTCTime
+    deriving
