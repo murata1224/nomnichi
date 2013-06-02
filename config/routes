@@ -15,3 +15,6 @@
 /userlist UserR GET POST
 
 /loginform LoginformR GET POST
+/pages                            PagesR           GET POST
+/pages/#WebpageId                 WebpageR         GET POST
+/pages/#WebpageId/edit            EditWebpageR     GET
