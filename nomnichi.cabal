@@ -25,6 +25,7 @@ library
                      Handler.Nomnichi
                      Handler.Usermanagement
                      Handler.Loginform
+                     Handler.OurStatic
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -78,6 +79,7 @@ library
                  , time
                  , old-locale
                  , http-types
+                 , blaze-html
 
 executable         nomnichi
     if flag(library-only)

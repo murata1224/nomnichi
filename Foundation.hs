@@ -107,8 +107,6 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
-    errorHandler NotFound = sendResponseStatus status200 $ TypedContent "text/html" (ContentFile "public_html/members.html" Nothing)
-    errorHandler other = defaultErrorHandler other
 
 -- How to run database actions.
 instance YesodPersist App where
