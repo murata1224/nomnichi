@@ -16,4 +16,4 @@
 
 /loginform LoginformR GET POST
 
-/ourstatic/#String OurStaticR GET 
+/ourstatic/*Texts OurStaticR GET 
