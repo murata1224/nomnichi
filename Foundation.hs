@@ -19,7 +19,7 @@ import Model
 import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
 import Yesod.Core.Types (Logger)
-
+import Network.HTTP.Types (status200)
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
 -- starts running, such as database connections. Every handler will have
@@ -75,7 +75,7 @@ instance Yesod App where
                 ])
             $(widgetFile "default-layout")
         giveUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
-
+    
     -- This is done to provide an optimization for serving static files from
     -- a separate domain. Please see the staticRoot setting in Settings.hs
     urlRenderOverride y (StaticR s) =
@@ -106,6 +106,9 @@ instance Yesod App where
         development || level == LevelWarn || level == LevelError
 
     makeLogger = return . appLogger
+
+    errorHandler NotFound = sendResponseStatus status200 $ TypedContent "text/html" (ContentFile "public_html/members.html" Nothing)
+    errorHandler other = defaultErrorHandler other
 
 -- How to run database actions.
 instance YesodPersist App where
